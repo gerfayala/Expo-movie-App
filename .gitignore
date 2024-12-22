@@ -134,3 +134,8 @@ dist
 
 expo-env.d.ts
 # @end expo-cli
+
+nativewind-env.d.ts
+
+
+.env

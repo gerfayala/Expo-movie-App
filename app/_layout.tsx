@@ -1,5 +1,11 @@
 import {Slot} from 'expo-router';
 
 import '../global.css';
+import {nowPlayingActions} from '@/core/actions/movies/now-playins.acion';
 
-export default Slot;
+const RootLayout = () => {
+  nowPlayingActions();
+  return <Slot />;
+};
+
+export default RootLayout;
