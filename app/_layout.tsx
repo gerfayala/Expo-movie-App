@@ -1,10 +1,17 @@
 import {Slot} from 'expo-router';
 
+import {QueryClient, QueryClientProvider} from 'react-query';
+
 import '../global.css';
-import {nowPlayingActions} from '@/core/actions/movies/now-playins.acion';
+
+const queryClient = new QueryClient();
 
 const RootLayout = () => {
-  return <Slot />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Slot />
+    </QueryClientProvider>
+  );
 };
 
 export default RootLayout;

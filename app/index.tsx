@@ -1,14 +1,7 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {Redirect} from 'expo-router';
 
-const HomeScreen = () => {
-  return (
-    <View className=" flex flex-1 mt-1 justify-center ">
-      <Text className=" text-blue-800 font-bold">index</Text>
-
-      <Text className=" text-blue-800 font-bold">HomeScreen</Text>
-    </View>
-  );
+const MovieApp = () => {
+  return <Redirect href="/home" />;
 };
 
-export default HomeScreen;
+export default MovieApp;
