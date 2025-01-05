@@ -15,7 +15,7 @@ const MoviePoster = ({poster, id, smallPoster = false, className}: Props) => {
         source={{uri: poster}}
         className="shadow-lg  w-full h-full"
         style={{
-          width: smallPoster ? 50 : 150,
+          width: smallPoster ? 90 : 150,
           height: smallPoster ? 130 : 250,
           borderRadius: 16
         }}
