@@ -2,9 +2,18 @@ import {movieApi} from '@/core/api/movide-db-api';
 import {MovieDBResponse} from '@/infrastructure/interfaces/movide-db-respones';
 import {MovieMapper} from '@/infrastructure/mappers/movie.mapper';
 
-export const TopRatedAction = async () => {
+interface Options {
+  page: number;
+  limit?: number;
+}
+
+export const TopRatedAction = async ({page = 1, limit = 10}: Options) => {
   try {
-    const {data} = await movieApi.get<MovieDBResponse>('/top_rated');
+    const {data} = await movieApi.get<MovieDBResponse>('/top_rated', {
+      params: {
+        page: page
+      }
+    });
 
     const movies = data.results.map(MovieMapper.fromTheMovieDBResponseToMovie);
 

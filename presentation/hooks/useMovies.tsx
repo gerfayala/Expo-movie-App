@@ -2,7 +2,7 @@ import {nowPlayingActions} from '@/core/actions/movies/now-playing.action';
 import {PopularMoviesAction} from '@/core/actions/movies/popular.action';
 import {TopRatedAction} from '@/core/actions/movies/top-rated.action';
 import {upcomingMoviesAction} from '@/core/actions/movies/upcoming.action';
-import {useQuery} from 'react-query';
+import {useInfiniteQuery, useQuery} from 'react-query';
 
 export const useMovies = () => {
   //Queries
@@ -17,10 +17,14 @@ export const useMovies = () => {
     queryFn: PopularMoviesAction,
     staleTime: 1000 * 60 * 60 * 24
   });
-  const topRatedQuery = useQuery({
+  const topRatedQuery = useInfiniteQuery({
     queryKey: ['movies', 'top_rated'],
-    queryFn: TopRatedAction,
-    staleTime: 1000 * 60 * 60 * 24
+    initialPageParam: 1,
+    queryFn: ({pageParam}) => {
+      return TopRatedAction({page: pageParam});
+    },
+    staleTime: 1000 * 60 * 60 * 24,
+    getNextPageParam: (lastPage, pages) => pages.length + 1
   });
   const upComingQuery = useQuery({
     queryKey: ['movies', 'upcoming'],

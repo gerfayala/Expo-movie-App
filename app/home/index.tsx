@@ -4,6 +4,7 @@ import {useMovies} from '@/presentation/hooks/useMovies';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import MainSlideShow from '@/presentation/hooks/components/MainSlideShow';
 import MoviesHorizontalList from '@/presentation/hooks/components/MoviesHorizontalList';
+import {Movie} from '@/infrastructure/interfaces/movie-interface';
 
 const HomeScreen = () => {
   const safeArea = useSafeAreaInsets();
@@ -25,7 +26,8 @@ const HomeScreen = () => {
       <MoviesHorizontalList title="Popular" movies={popularQuery.data ?? []} />
       <MoviesHorizontalList
         title="Top Rated"
-        movies={topRatedQuery.data ?? []}
+        movies={topRatedQuery.data?.pages.flat() ?? []}
+        loadNextPage={topRatedQuery.fetchNextPage}
       />
       <MoviesHorizontalList
         title="Upcoming"
