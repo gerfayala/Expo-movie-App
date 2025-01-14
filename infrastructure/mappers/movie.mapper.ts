@@ -1,6 +1,10 @@
 import {Result} from '../interfaces/movide-db-respones';
+import {
+  MovieDBCast,
+  MovieDBCastResponse
+} from '../interfaces/movie-db-cast-response';
 import {MovideDBDetailsResponse} from '../interfaces/movie-db-details-response';
-import {Movie, MovieDetails} from '../interfaces/movie-interface';
+import {Cast, Movie, MovieDetails} from '../interfaces/movie-interface';
 
 export class MovieMapper {
   static fromTheMovieDBResponseToMovie = (movie: Result): Movie => {
