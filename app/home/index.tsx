@@ -8,9 +8,8 @@ import {
 import React from 'react';
 import {useMovies} from '@/presentation/hooks/useMovies';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import MainSlideShow from '@/presentation/hooks/components/MainSlideShow';
-import MoviesHorizontalList from '@/presentation/hooks/components/MoviesHorizontalList';
-import {Movie} from '@/infrastructure/interfaces/movie-interface';
+import MainSlideShow from '@/presentation/components/Movies/MainSlideShow';
+import MoviesHorizontalList from '@/presentation/components/Movies/MoviesHorizontalList';
 
 const HomeScreen = () => {
   const safeArea = useSafeAreaInsets();
